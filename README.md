@@ -13,6 +13,30 @@ python app.py
 
 Open `http://127.0.0.1:8050`. The default page is **Playground**; **All chapters · Report** is next in the sidebar. Supply a newer database by replacing `data/reviews.db` or setting `REVIEWS_DB` to an absolute path before restarting the application.
 
+## Deploy to Railway (temporary team demo)
+
+The repository contains a **Dockerfile** that installs the Dash dependencies and starts the production Gunicorn server. A Dockerfile is used rather than `railway.json` because Railway is retiring its legacy config-as-code format for new deployments in late 2026.
+
+1. **Approve the data for sharing.** The complete bundle contains `data/reviews.db` and the UI can export original reviews. Anyone with access to a public Railway site can inspect those records. Private GitHub hosting does **not** make the web URL private. If these reviews must be restricted, add authentication or use a protected environment before deploying.
+2. Push the **contents** of the `review_intelligence/` folder to the root of a GitHub repository, including `Dockerfile`, `requirements.txt`, source code and `data/reviews.db` (only if approved). If kept in a subfolder, set Railway's **Root Directory** to that subfolder.
+3. In Railway choose **New Project → Deploy from GitHub Repo**. Railway detects the Dockerfile and builds the service. Do not set a conflicting custom build/start command. No PostgreSQL service is needed.
+4. In **Settings → Networking**, generate a public HTTPS domain. In the service's **Settings → Deploy**, optionally set the **Healthcheck Path** to `/healthz` (returns HTTP 503 if the SQLite file is missing).
+5. Verify the Playground landing page, charts, a heatmap click, evidence export, and page navigation at the deployed URL.
+
+The Dockerfile's production start command is:
+
+```bash
+gunicorn app:server --bind 0.0.0.0:${PORT:-8080} --workers 1 --threads 4 --timeout 120
+```
+
+The source uses `REVIEWS_DB` if set; otherwise it loads the bundled `data/reviews.db` read-only. Railway's ordinary container filesystem is ephemeral. To update the dataset, commit a replacement database and redeploy, or use a configured persistent volume and set `REVIEWS_DB` to its absolute path. Keep optional Google translation credentials in Railway's **Variables** rather than committing keys.
+
+For a local production-server check after installing dependencies:
+
+```bash
+gunicorn app:server --bind 127.0.0.1:8050 --workers 1 --threads 4 --timeout 120
+```
+
 ## Pages
 
 - **Playground:** daily total recommended review counts above zero and non-recommended counts below zero; markers for October 23 (patch 1.1.2), October 30 (1.1.3), November 9 (1.2), and November 19 (hotfix 1.2.1). Those markers are provided dates, **not** evidence of patch effects. Patch dates beyond the loaded reviews remain visible without invented review counts. Filter any tag by positive, negative, neutral, or mixed sentiment; optionally intersect with a second tag. Explore sentiment over time and browse original reviews.

@@ -765,6 +765,12 @@ def build_about():
 app=Dash(__name__,title='Review Intelligence',suppress_callback_exceptions=True,
          assets_folder=str(ROOT/'assets'))
 server=app.server
+
+@server.get('/healthz')
+def railway_health():
+    """Lightweight availability check for Railway."""
+    from flask import jsonify
+    return jsonify(status='ok' if DB.is_file() else 'missing_database', database_present=DB.is_file()), (200 if DB.is_file() else 503)
 app.layout=html.Div([
    dcc.Location(id='route',refresh=False),dcc.Store(id='drawer-state',data={'open':False}),
    dcc.Download(id='evidence-json-file'),dcc.Download(id='playground-json-file'),dcc.Download(id='review-json-file'),
