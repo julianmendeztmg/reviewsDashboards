@@ -101,3 +101,15 @@ button:disabled{opacity:.4;cursor:not-allowed}
 
 /* V11: no empty right-hand column when an interpretive second-step was removed. */
 .stacked-panels.single-stage{grid-template-columns:minmax(0,1fr)}
+
+/* V12: one coherent tag exploration workspace. */
+.playground-workspace {
+  border: 1px solid #354a5c;
+  border-radius: 16px;
+  padding: 12px;
+  margin-top: 22px;
+  background: rgba(19, 34, 48, .58);
+}
+.playground-workspace > .panel { margin: 10px 0; }
+.playground-workspace #pg-timeline-section,
+.playground-workspace #pg-reviews-section { border-top: 2px solid #3a5263; }

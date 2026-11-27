@@ -33,7 +33,7 @@ def candidate_ids(conn,case, rating=None, tag=None, sentiment=None, related_tag=
         if day:
             conditions.append('substr(r.date,1,10)=?');args.append(day)
         else:
-            conditions.append("substr(r.date,1,10) BETWEEN '2026-10-20' AND '2026-11-08'")
+            conditions.append("substr(r.date,1,10) BETWEEN '2026-10-20' AND date('now')")
     else:
         tags=CASES[case]['tags']
         if tag and tag not in tags: raise ValueError('Tag outside the candidate')
@@ -56,7 +56,7 @@ def summary(conn,case):
     if case=='launch':
         return [dict(x) for x in conn.execute("""SELECT substr(date,1,10) day,COUNT(*) n,SUM(rating=1) recommended,
           ROUND(100.0*SUM(rating=1)/COUNT(*),1) pct,ROUND(AVG(playtime_at_review_min)/60.0,1) avg_hours
-          FROM reviews WHERE status='ok' AND substr(date,1,10) BETWEEN '2026-10-20' AND '2026-11-08'
+          FROM reviews WHERE status='ok' AND substr(date,1,10) BETWEEN '2026-10-20' AND date('now')
           GROUP BY day ORDER BY day""")]
     tags=CASES[case]['tags']
     marks=','.join('?' for _ in tags)

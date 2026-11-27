@@ -67,3 +67,16 @@ Replacing the SQLite file refreshes deterministic calculations at the next app s
 V11 passed Python compilation plus 12 focused automated regression tests covering chart construction, review totals, patch markers, evidence populations, exports and the technical heatmap. The complete historical test suite did not finish in the available runtime. Dash was not installed in the authoring environment, so the live browser render and click interactions have **not** been smoke-tested here.
 
 The *complete* ZIP includes the supplied review database. Check access rights before committing or sharing it. The *source-only* ZIP omits the database. For team deployment, run on an authenticated internal server; exposing Dash's development server is not a production security setup.
+
+## V12 usability updates
+
+- **Playground is the landing page.** The former "All chapters" page has been removed from the menu. Previous `/chapters` URLs redirect visually to Playground.
+- **Daily review volume is clickable.** Select a green (recommended) or red (not recommended) bar on any day to open exactly that day's reviews in the evidence drawer, with existing JSON export and text highlights.
+- **Tag exploration is contextual.** Sentiment evolution and matching reviews appear only after choosing a primary tag (or an enabled comparison tag), and the three steps share a bordered workspace.
+- **Navigation resets page controls and selected populations.** Re-entering a page clears selections, filters and open evidence, rather than retaining the prior visit's UI state.
+- **One-click evidence.** Named puzzles, puzzle frustration, and the other candidate first-stage charts directly open their matching review populations. The separate evidence button still remains available as an alternative.
+- **Launch timeline.** The former November 8 cutoff has been removed. All dated reviews from October 20 through today are eligible for the chart. The x-axis extends through the current day; no synthetic reviews are added for days without data.
+
+### Deployment update
+
+The Dockerfile and Gunicorn production command are unchanged. Replace the contents of the existing GitHub repository with the new release and let Railway redeploy. Review data is still included only in the **complete** package.

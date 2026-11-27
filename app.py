@@ -6,6 +6,7 @@ import json
 import os
 import re
 from pathlib import Path
+from datetime import date, timedelta
 
 import dash
 from dash import Dash, Input, Output, State, dcc, html, ctx, no_update
@@ -517,6 +518,7 @@ def candidate_figure(case):
             hovertemplate='%{x}<br>%{y:.1f}% recommended<br>%{customdata[2]} of %{customdata[1]} reviews<extra></extra>'))
         fig.add_vrect(x0='2026-10-20',x1='2026-10-25',fillcolor='#d8b677',opacity=.10,line_width=0)
         fig.update_yaxes(title='Recommended (%)',range=[0,100])
+        fig.update_xaxes(type='date',range=['2026-10-20',(date.today()+timedelta(days=1)).isoformat()],tickformat='%d %b')
     elif case in ('presentation','fandom'):
         tags=CASES[case]['tags']
         counts={}
@@ -697,8 +699,8 @@ def review_volume_figure():
         fig.add_annotation(x=day,y=1.08,yref='paper',text=title+'<br>'+day[5:],
             showarrow=False,font={'size':10,'color':'#f4d69b'},textangle=-35)
     last=max(days) if days else '2026-10-20'
-    from datetime import date,timedelta
-    end=max(date.fromisoformat(last),date(2026,11,19))+timedelta(days=2)
+    from datetime import date, timedelta
+    end=max(date.fromisoformat(last),date.today(),date(2026,11,19))+timedelta(days=2)
     fig.update_layout(barmode='relative',height=465,
         paper_bgcolor='rgba(0,0,0,0)',plot_bgcolor='rgba(0,0,0,0)',font={'color':'#d6e2ed'},
         margin={'l':58,'r':16,'t':115,'b':65},legend={'orientation':'h','y':1.3},
@@ -719,6 +721,7 @@ def build_playground():
            dcc.Graph(id='pg-volume',figure=review_volume_figure(),config={'displayModeBar':False}),
            html.P('No reviews appear beyond the latest date in the loaded database; later patch markers remain visible for future data updates.',className='small subtle')],className='panel'),
        html.Div([
+       html.Div([
           html.Div([html.Label('Primary tag'),dcc.Dropdown(id='pg-tag',options=tags,value=None,
               placeholder='All tags (no filter)',clearable=True),html.Label('Primary sentiment'),sentiment_checklist('pg-sentiments')],className='filter'),
           html.Div([html.Label('Recommendation'),dcc.Dropdown(id='pg-rating',options=[
@@ -737,7 +740,7 @@ def build_playground():
                {'label':'Only matching filtered reviews','value':'filtered'}],value='all',clearable=False)],className='filter'),
            html.Div([html.Label('Time aggregation'),dcc.Dropdown(id='pg-grain',options=[
                {'label':'Daily','value':'day'},{'label':'Weekly','value':'week'}],value='day',clearable=False)],className='filter'),
-           dcc.Loading(html.Div(id='pg-timelines'),type='circle')],className='panel'),
+           dcc.Loading(html.Div(id='pg-timelines'),type='circle')],className='panel',id='pg-timeline-section'),
        html.Div([html.H3('Matching original reviews'),html.Div(id='pg-count',className='pg-count'),
            html.Div([html.Button('Export matching reviews (.json)',id='pg-export',className='ghost-btn'),
                      html.Span('Exports the entire current selection.',className='subtle small')],className='action-row'),
@@ -751,7 +754,8 @@ def build_playground():
                  'value':x['language']} for x in language_options()],value='all',clearable=False)],className='filter')],className='three-cols'),
            dcc.Loading(html.Div(id='pg-review-list',className='playground-list'),type='circle'),
            html.Div([html.Button('← Previous',id='pg-prev',className='ghost-btn'),
-              html.Span(id='pg-page-label'),html.Button('Next →',id='pg-next',className='ghost-btn')],className='pager')],className='panel playground-results')
+              html.Span(id='pg-page-label'),html.Button('Next →',id='pg-next',className='ghost-btn')],className='pager')],className='panel playground-results',id='pg-reviews-section')
+       ],className='playground-workspace')
     ],className='page-content')
 
 def build_about():
@@ -778,7 +782,6 @@ app.layout=html.Div([
    html.Aside([html.Div([html.Div('RI',className='logo'),html.Div([html.Strong('REVIEW'),html.Span('INTELLIGENCE')],className='brand-copy')],className='brand'),
      html.Div('EXPLORE',className='nav-head'),
      dcc.Link('Playground · Explore data',href='/playground',className='nav-link',id='nav-playground'),
-     dcc.Link('All chapters · Report',href='/chapters',className='nav-link',id='nav-home'),
      html.Div('CHAPTER 1 · WHAT WENT WELL',className='nav-head'),
      dcc.Link('Co-op experience',href='/coop',className='nav-link',id='nav-coop'),
      dcc.Link('Named puzzles',href='/named-puzzles',className='nav-link',id='nav-named'),
@@ -796,8 +799,7 @@ app.layout=html.Div([
      dcc.Link('Evidence manifest',href='/manifest',className='nav-link',id='nav-manifest'),
      dcc.Link('Methodology',href='/about',className='nav-link',id='nav-about'),
      html.Div('Local / read-only SQLite',className='sidebar-footer')],className='sidebar'),
-   html.Main([html.Div(id='home-page',children=build_home(),style={'display':'none'}),
-             html.Div(id='playground-page',children=build_playground()),
+   html.Main([html.Div(id='playground-page',children=build_playground()),
              html.Div(id='coop-page',children=build_coop(),style={'display':'none'}),
              html.Div(id='puzzles-page',children=build_puzzles(),style={'display':'none'}),
              html.Div(id='named-page',children=build_named(),style={'display':'none'}),
@@ -823,11 +825,32 @@ app.layout=html.Div([
    ])
 ])
 
-@app.callback([Output('playground-page','style'),Output('home-page','style'),Output('coop-page','style'),Output('puzzles-page','style'),Output('named-page','style'),Output('unexpected-page','style'),Output('playtime-page','style'),Output('manifest-page','style'),Output('about-page','style')]+[Output(k+'-page','style') for k in CASES],Input('route','pathname'))
+@app.callback([Output('playground-page','style'),Output('coop-page','style'),Output('puzzles-page','style'),Output('named-page','style'),Output('unexpected-page','style'),Output('playtime-page','style'),Output('manifest-page','style'),Output('about-page','style')]+[Output(k+'-page','style') for k in CASES],Input('route','pathname'))
 def route(path):
     path=path or '/'
-    if path=='/':path='/playground'
-    return [{'display':'block' if path==p else 'none'} for p in ('/playground','/chapters','/coop','/puzzles','/named-puzzles','/mixed-recommendations','/playtime','/manifest','/about')+tuple('/'+k for k in CASES)]
+    if path in ('/','/chapters'):path='/playground'
+    return [{'display':'block' if path==p else 'none'} for p in ('/playground','/coop','/puzzles','/named-puzzles','/mixed-recommendations','/playtime','/manifest','/about')+tuple('/'+k for k in CASES)]
+
+@app.callback(
+    [Output(k,'data',allow_duplicate=True) for k in ('coop-selection','puzzle-selection','named-selection','unexpected-selection','playtime-selection')]
+    +[Output(k+'-selection','data',allow_duplicate=True) for k in CASES]
+    +[Output('drawer-state','data', allow_duplicate=True),
+      Output('pg-tag','value',allow_duplicate=True),Output('pg-compare-tag','value',allow_duplicate=True),
+      Output('pg-sentiments','value',allow_duplicate=True),Output('pg-compare-sentiments','value',allow_duplicate=True),
+      Output('pg-rating','value',allow_duplicate=True),Output('pg-toggle-compare','n_clicks',allow_duplicate=True),
+      Output('pg-timeline-scope','value',allow_duplicate=True),Output('pg-grain','value',allow_duplicate=True),
+      Output('pg-search','value',allow_duplicate=True),Output('pg-sort','value',allow_duplicate=True),
+      Output('pg-language','value',allow_duplicate=True),
+      Output('rating-select','value',allow_duplicate=True),Output('sentiment-select','value',allow_duplicate=True),
+      Output('sort-select','value',allow_duplicate=True),
+      Output('page-state','data',allow_duplicate=True),Output('pg-page-store','data',allow_duplicate=True)]
+    +[Output(k,'clickData') for k in ('pg-volume','matrix-graph','puzzle-graph','named-graph','unexpected-graph','playtime-graph')]
+    +[Output(k+'-graph','clickData') for k in CASES],
+    Input('route','pathname'),prevent_initial_call=True)
+def reset_page_on_navigation(path):
+    return ([None]*(5+len(CASES)) + [{'open':False},None,None,list(STAGE_SENTIMENTS),
+            list(STAGE_SENTIMENTS),'all',0,'all','day','','recent','all',None,None,'difference',1,1]
+            +[None]*(6+len(CASES)))
 
 @app.callback(Output('coop-selection','data'),Output('rating-select','value'),Output('sentiment-select','value'),
     Input('matrix-graph','clickData'),Input('rating-select','value'),Input('sentiment-select','value'),Input('coop-clear','n_clicks'),
@@ -895,17 +918,43 @@ def update_puzzle_comparison(selection):
     *[Input(k+'-insight','n_clicks') for k in CASES],
     Input('launch-day-2026-10-20','n_clicks'),Input('launch-day-2026-10-25','n_clicks'),
     Input('technical-puzzle-overlap','clickData'),
+    Input('pg-volume','clickData'),Input('named-graph','clickData'),Input('puzzle-graph','clickData'),
+    *[Input(k+'-graph','clickData') for k in CASES],
     State('coop-selection','data'),State('puzzle-selection','data'),State('named-selection','data'),State('unexpected-selection','data'),State('playtime-selection','data'),
     *[State(k+'-selection','data') for k in CASES],
     State('manifest-rating','value'),State('manifest-sentiment','value'),State('manifest-topic','value'),prevent_initial_call=True)
 def drawer_actions(inspect,bar,first,second,mopen,close,pinspect,pbar,pinsight,ninspect,nbar,ninsight,uinspect,ubar,uinsight0,uinsight1,tinspect,tbar,tinsight,*args):
     n=len(CASES)
-    cs,ps,ns,us,ts= args[3*n+3:3*n+8]
-    selections=dict(zip(CASES,args[3*n+8:4*n+8]))
+    new_graph_inputs=n+3
+    cs,ps,ns,us,ts= args[3*n+3+new_graph_inputs:3*n+8+new_graph_inputs]
+    selections=dict(zip(CASES,args[3*n+8+new_graph_inputs:4*n+8+new_graph_inputs]))
     mr,ms,mt=args[-3:]
     new_related=dict(zip(CASES,args[n:2*n]))
     trigger=ctx.triggered_id
     if trigger=='drawer-close':return {'open':False}
+    if trigger in ('pg-volume','named-graph','puzzle-graph') or trigger in (k+'-graph' for k in CASES):
+        event_index={'pg-volume':3*n+3,'named-graph':3*n+4,'puzzle-graph':3*n+5}
+        if trigger in event_index:event=args[event_index[trigger]]
+        else:event=dict(zip((k+'-graph' for k in CASES),args[3*n+6:4*n+6])).get(trigger)
+        if not event or not event.get('points'):return no_update
+        pt=event['points'][0]
+        if trigger=='pg-volume':
+            return {'open':True,'topic':'daily-volume','day':str(pt['x'])[:10],
+                    'rating':1 if pt.get('curveNumber')==0 else 0}
+        data=pt.get('customdata')
+        if not data:return no_update
+        if trigger=='named-graph':
+            return {'open':True,'topic':'named','tag':data[0],'sentiment':data[1],
+                    'rating':None if int(data[3])<0 else int(data[3])}
+        if trigger=='puzzle-graph':
+            return {'open':True,'topic':'puzzles','rating':None if int(data[0])<0 else int(data[0]),
+                    'issue':data[1],'sentiment':data[2]}
+        case=trigger[:-6]
+        if case=='launch':return {'open':True,'topic':'launch','day':data[0]}
+        if case in CASES:
+            return {'open':True,'topic':case,'tag':data[0],
+                    'rating':None if int(data[1])<0 else int(data[1]),'sentiment':data[2]}
+        return no_update
     if trigger=='technical-puzzle-overlap':
         click=args[3*n+2]
         if click and click.get('points'):
@@ -967,6 +1016,10 @@ def drawer_actions(inspect,bar,first,second,mopen,close,pinspect,pbar,pinsight,n
 
 
 def ids_for_drawer(conn,state):
+    if state.get('topic')=='daily-volume':
+        return [row[0] for row in conn.execute(
+            "SELECT id FROM reviews WHERE status='ok' AND substr(date,1,10)=? AND rating=? ORDER BY id",
+            (state['day'],int(state['rating'])))]
     if state.get('topic')=='technical-puzzle-overlap':
         return sorted(set(filter_ids(conn,state.get('puzzle'),['negative'],state.get('technical'),['negative'])))
     if state.get('topic') in CASES:
@@ -1005,6 +1058,7 @@ def drawer_view(state):
     if state.get('topic')=='playtime':title=f'{state.get("bucket") or "All playtimes"} · {label}'
     if state.get('topic') in CASES:
         title=(state.get('day') or state.get('tag') or CASES[state['topic']]['title'])+' · '+label+' · '+(sent or 'all sentiments')
+    if state.get('topic')=='daily-volume':title=f"{state['day']} · {label} reviews"
     if state.get('topic')=='technical-puzzle-overlap':title=f"Negative {state['puzzle']} + negative {state['technical']}"
     if state.get('topic')=='named':title=f'{label} · {sent or "any sentiment"} · {state.get("tag") or "all named puzzles"}'
     if extra:title+=f' + {es} {extra}'
@@ -1221,12 +1275,20 @@ def pg_timeline_plot(history,tag):
         xaxis={'type':'category','tickangle':-35})
     return fig
 
+@app.callback(Output('pg-timeline-section','style'),Output('pg-reviews-section','style'),
+              Input('pg-tag','value'),Input('pg-compare-tag','value'),Input('pg-toggle-compare','n_clicks'))
+def show_playground_results(tag,comparison,clicks):
+    active=bool((clicks or 0)%2)
+    visible=bool(tag or (active and comparison))
+    style={'display':'block'} if visible else {'display':'none'}
+    return style,style
+
 @app.callback(Output('pg-timelines','children'),
     Input('pg-tag','value'),Input('pg-sentiments','value'),Input('pg-compare-tag','value'),
     Input('pg-compare-sentiments','value'),Input('pg-toggle-compare','n_clicks'),
     Input('pg-grain','value'),Input('pg-rating','value'),Input('pg-timeline-scope','value'))
 def update_pg_timeline(tag,sents,comp,comp_sents,n,grain,rating,scope):
-    if not tag and not (n or 0)%2:return html.P('Select a tag to see its sentiment evolution.',className='subtle')
+    if not tag and not (bool((n or 0)%2) and comp):return []
     on=bool((n or 0)%2)
     with connection() as conn:
         # Timeline compares sentiment of selected tag(s), using same review-overlap filters.
@@ -1257,6 +1319,8 @@ def update_pg_page(tag,sents,comp,comp_sents,n,rating,search,sort,lang,prev,next
     Input('pg-rating','value'),Input('pg-search','value'),Input('pg-sort','value'),
     Input('pg-language','value'),Input('pg-page-store','data'))
 def update_pg_reviews(tag,sents,comp,comp_sents,n,rating,search,sort,lang,page):
+    if not (tag or (bool((n or 0)%2) and comp)):
+        return '',[],''
     with connection() as conn:
         ids=playground_query(conn,tag,sents,bool((n or 0)%2),comp,comp_sents,rating)
         reviews,total=review_page(conn,ids,page=page or 1,per_page=8,search=search or '',order=sort or 'recent',language=lang or 'all')
