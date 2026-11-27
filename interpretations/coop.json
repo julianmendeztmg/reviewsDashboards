@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0",
+  "insight_id": "coop-experience-v1",
+  "title": "What makes cooperation satisfying, and what changes when it disappoints?",
+  "status": "editorially_reviewed",
+  "source_dataset_sha256": "761fb2023d18c64353fac62548c34528fb964c0066bd5076474039eba97077d4",
+  "version": 1,
+  "interpretations": [
+    {
+      "id": "coop-positive-puzzles",
+      "title": "Positive co-op and puzzle appreciation appear together",
+      "claim": "Within recommended reviews, players positive about co-op are more likely to express positive sentiment about puzzle design and difficulty. This may reflect enjoyment of shared problem-solving rather than multiplayer presence alone.",
+      "basis": "Compare positive puzzle-design and difficulty sentiment within recommended reviews: positive co-op cohort versus all other recommended reviews.",
+      "limitations": "Review-level association; the two tags need not describe the same moment. Not a causal claim.",
+      "default_rating": 1,
+      "default_sentiment": "positive"
+    },
+    {
+      "id": "coop-negative-design",
+      "title": "Co-op criticism accompanies wider puzzle dissatisfaction",
+      "claim": "Among non-recommended reviews, negative co-op sentiment frequently coincides with negative puzzle-design sentiment and comparisons to earlier games. Some reviewers describe diminished interdependence or uneven participation.",
+      "basis": "Compare negative puzzle-design and series-comparison sentiments within non-recommended reviews, split by negative co-op sentiment.",
+      "limitations": "Some references concern franchise expectations; semantic ambiguity must remain visible. No causal inference.",
+      "default_rating": 0,
+      "default_sentiment": "negative"
+    }
+  ]
+}

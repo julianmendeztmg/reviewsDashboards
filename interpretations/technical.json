@@ -1,0 +1,7 @@
+{
+  "schema_version": "1.0",
+  "source_dataset_sha256": "761fb2023d18c64353fac62548c34528fb964c0066bd5076474039eba97077d4",
+  "title": "Progression blockers often accompany other technical complaints",
+  "claim": "Progression blockers frequently appear alongside bugs, crashes, or save problems. The evidence suggests progression interruption is one important way technical issues are experienced, without proving which defect caused which interruption.",
+  "basis": "Compare negative technical tags and select the progression-blocker cohort to inspect related sentiments and review passages."
+}

@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "insight_id": "recommendation-sentiment-v2",
+  "source_dataset_sha256": "761fb2023d18c64353fac62548c34528fb964c0066bd5076474039eba97077d4",
+  "version": 2,
+  "interpretations": [
+    {
+      "id": "recommended-despite-criticism",
+      "title": "A recommendation can coexist with substantial criticism",
+      "claim": "Of 818 recommended reviews, 222 have mixed overall text sentiment. Compared with broadly positive recommended reviews, these players more often criticize guidance, technical issues, and comparisons with previous games. A recommendation does not mean every part of the experience was enjoyed.",
+      "basis": "Compare overall sentiment among recommended reviews, then examine the positive and negative tag sentiments in each group. The mixed population contains 222 reviews and the positive population 484.",
+      "limitations": "The overall text sentiment is an existing automated classification, and may not always reflect the reviewer's intention. Co-occurrences do not identify which positive features compensate for which complaints."
+    },
+    {
+      "id": "nonrecommended-reviews-rarely-express-positive-overall-tone",
+      "title": "Non-recommended reviews are overwhelmingly negative in their overall tone",
+      "claim": "Among 1,327 non-recommended reviews, 1,182 are classified as negative overall, 112 as mixed, 27 as neutral, and 6 as positive. The smaller mixed group is worth exploring separately: it may contain features players still value despite withholding a recommendation.",
+      "basis": "Overall sentiment classification among non-recommended reviews: 1,182 negative (89.1%), 112 mixed (8.4%), 27 neutral (2.0%), 6 positive (0.5%). Select any stacked segment to inspect its tag-level positive and negative evidence.",
+      "limitations": "Overall sentiment is automatically assigned. A non-recommendation is not a direct severity measure, and a mixed classification alone does not reveal which qualities were appreciated."
+    }
+  ]
+}

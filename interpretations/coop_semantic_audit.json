@@ -1,0 +1,150 @@
+{
+  "dataset_sha256": "761fb2023d18c64353fac62548c34528fb964c0066bd5076474039eba97077d4",
+  "method": "Human-readable contextual review of not-recommended reviews with positive co-op tags; advisory only; no original tag assignments rewritten",
+  "counts": {
+    "indirect_current_experience": 4,
+    "direct_current_coop": 7,
+    "insufficient_coop_praise": 2,
+    "different_cooperation_referent": 1,
+    "context_dependent": 1,
+    "previous_game_or_series": 2
+  },
+  "records": [
+    {
+      "review_id": "238182841",
+      "label": "indirect_current_experience",
+      "audit_note": "Not fighting with friend; refers to interpersonal experience, not explicit game-design praise",
+      "source_row_id": 340,
+      "quote": "The only we were here  game that so far i am not fighting with my friend over puzzles.",
+      "exact_span": true
+    },
+    {
+      "review_id": "238219169",
+      "label": "direct_current_coop",
+      "audit_note": "Explicitly praises this installment keeping players together longer",
+      "source_row_id": 723,
+      "quote": "this one has kept the co op together far longer than in the others",
+      "exact_span": true
+    },
+    {
+      "review_id": "238243441",
+      "label": "direct_current_coop",
+      "audit_note": "Praises teamwork in this game's crystal puzzle",
+      "source_row_id": 967,
+      "quote": "вот там тим ворк да",
+      "exact_span": true
+    },
+    {
+      "review_id": "238245026",
+      "label": "insufficient_coop_praise",
+      "audit_note": "Joke about blaming partner, not clearly positive evaluation of co-op mechanics",
+      "source_row_id": 970,
+      "quote": "게임을 탓하지 말고 짝궁을 탓하세요 그게 정신건강에 이롭습니다",
+      "exact_span": true
+    },
+    {
+      "review_id": "238333220",
+      "label": "direct_current_coop",
+      "audit_note": "Describes actual coordination with partner on a puzzle",
+      "source_row_id": 1935,
+      "quote": "координироваться с напарником и действительно решать задачу",
+      "exact_span": true
+    },
+    {
+      "review_id": "238400733",
+      "label": "indirect_current_experience",
+      "audit_note": "Enjoys time playing with friend; does not isolate co-op design",
+      "source_row_id": 2708,
+      "quote": "наслаждаюсь времяпровождением с корешом, очередной раз ломая голову",
+      "exact_span": true
+    },
+    {
+      "review_id": "238623294",
+      "label": "different_cooperation_referent",
+      "audit_note": "Praises cooperation with own shadow rather than two-player co-op",
+      "source_row_id": 5238,
+      "quote": "和自己的影子合作那一关好评",
+      "exact_span": true
+    },
+    {
+      "review_id": "238709757",
+      "label": "context_dependent",
+      "audit_note": "Contrast between great co-op puzzle game and later weaker puzzles; referent needs context",
+      "source_row_id": 6253,
+      "quote": "Le jeu passe d'un super jeu enigme en coop",
+      "exact_span": true
+    },
+    {
+      "review_id": "238906069",
+      "label": "direct_current_coop",
+      "audit_note": "Praises a shrinking section as communicative",
+      "source_row_id": 7338,
+      "quote": "is pretty fun and communicative",
+      "exact_span": true
+    },
+    {
+      "review_id": "239049018",
+      "label": "direct_current_coop",
+      "audit_note": "Praises role-swapping between players in named puzzle",
+      "source_row_id": 8427,
+      "quote": "дать возможность поменяться ролями посередине головоломки",
+      "exact_span": true
+    },
+    {
+      "review_id": "239053522",
+      "label": "direct_current_coop",
+      "audit_note": "Calls installment one of better co-op puzzle games",
+      "source_row_id": 8490,
+      "quote": "Aber eins der besseren koop Rätsel spiele.",
+      "exact_span": true
+    },
+    {
+      "review_id": "239185051",
+      "label": "indirect_current_experience",
+      "audit_note": "Still somewhat fun with friend, but not precise co-op-mechanic praise",
+      "source_row_id": 9503,
+      "quote": "It's still somewhat of a fun game to play with your mate.",
+      "exact_span": true
+    },
+    {
+      "review_id": "239363145",
+      "label": "indirect_current_experience",
+      "audit_note": "Funny partner voice interaction, not general cooperative puzzle design",
+      "source_row_id": 10416,
+      "quote": "it was so funny to hear my mate with that squeaky voice xD",
+      "exact_span": true
+    },
+    {
+      "review_id": "239417741",
+      "label": "previous_game_or_series",
+      "audit_note": "Quote describes original installment, not current one",
+      "source_row_id": 10652,
+      "quote": "overall just a fun experience for a co-op",
+      "exact_span": true
+    },
+    {
+      "review_id": "239503862",
+      "label": "previous_game_or_series",
+      "audit_note": "Quote describes discovering the older games in the series",
+      "source_row_id": 10989,
+      "quote": "A friend and I stumbled uppon this series when we were bored and wanted some cool new co-op games.",
+      "exact_span": true
+    },
+    {
+      "review_id": "239628416",
+      "label": "direct_current_coop",
+      "audit_note": "Praises cooperative touches in specific puzzles",
+      "source_row_id": 11357,
+      "quote": "其实和朋友玩还是开心的，部分谜题在配合上的小巧思还是不赖的",
+      "exact_span": true
+    },
+    {
+      "review_id": "239662122",
+      "label": "insufficient_coop_praise",
+      "audit_note": "First half was fun; evidence does not mention co-op",
+      "source_row_id": 11564,
+      "quote": "The first half was fun and had some hilarious moments.",
+      "exact_span": true
+    }
+  ]
+}

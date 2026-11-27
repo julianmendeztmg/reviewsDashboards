@@ -1,0 +1,7 @@
+{
+  "schema_version": "1.0",
+  "source_dataset_sha256": "761fb2023d18c64353fac62548c34528fb964c0066bd5076474039eba97077d4",
+  "title": "The discussion shifted from early technical friction toward puzzle and expectation criticism",
+  "claim": "Recommendation rates were substantially higher on October 20 than October 25. The later sample has longer average playtime and more negative mentions of puzzle design, clarity and series comparisons. These are changes in reviewer composition and expressed sentiment—not proof that product quality declined on a specific date.",
+  "basis": "Compare daily recommendation rates, then choose October 20 and October 25 to inspect tag sentiment distributions, playtime and the exact daily review populations."
+}

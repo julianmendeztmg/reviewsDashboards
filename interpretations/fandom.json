@@ -1,0 +1,7 @@
+{
+  "schema_version": "1.0",
+  "source_dataset_sha256": "761fb2023d18c64353fac62548c34528fb964c0066bd5076474039eba97077d4",
+  "title": "Fandom may intensify disappointment when expected cooperation is missing",
+  "claim": "Positive feelings toward the series do not guarantee approval of this installment. Among non-recommended reviews praising the franchise, negative comparisons with earlier games are particularly common. The evidence raises a question about expectations for communication, shared problem-solving and the series identity, rather than proving why those players rejected the game.",
+  "basis": "Start with Anticipation & fandom sentiment split by recommendation. Select Not recommended + Positive; compare with negative Series comparison, then inspect all matching original reviews and highlighted passages."
+}

@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0",
+  "source_dataset_sha256": "761fb2023d18c64353fac62548c34528fb964c0066bd5076474039eba97077d4",
+  "interpretations": [
+    {
+      "id": "named-puzzles-strength",
+      "title": "Some individual puzzles earn praise even in critical reviews",
+      "claim": "Temporal calamity and Big and small attract relatively positive tag sentiment, while several other named puzzles attract substantially more criticism. This suggests players distinguish standout puzzle experiences from their overall assessment of puzzle design.",
+      "basis": "Compare unique review-level positive and negative sentiment among the nine predefined named puzzle tags, then inspect which other sentiments co-occur.",
+      "limitations": "Named puzzle mentions represent a self-selected set of reviewers; tag-level co-occurrence does not identify which specific puzzle another complaint describes."
+    }
+  ]
+}

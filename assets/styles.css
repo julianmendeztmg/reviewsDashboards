@@ -1,0 +1,103 @@
+:root{--bg:#101924;--panel:#172432;--panel2:#1a2b3b;--line:#2b4052;--text:#e8eef4;--muted:#91a6b6;--teal:#34b590;--red:#df8077;--blue:#78b4ee}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:14px}a{color:#88c4ef;text-decoration:none}a:hover{text-decoration:underline}h1,h2,h3,p{margin-top:0}h2{font-size:29px;line-height:1.22;letter-spacing:-.7px;margin-bottom:12px}h3{font-size:17px;line-height:1.4;margin-bottom:12px}p{line-height:1.65}.subtle,.hint,.footnote{color:var(--muted)}.small{font-size:12px}.mono{font-family:ui-monospace,monospace;overflow-wrap:anywhere}.eyebrow{font-size:11px;letter-spacing:1.6px;font-weight:700;color:#86a2b7;margin-bottom:11px}.sidebar{position:fixed;top:0;left:0;bottom:0;width:246px;padding:28px 16px;background:#111d29;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:5px;z-index:3}.brand{display:flex;align-items:center;gap:12px;padding:0 10px 35px}.logo{background:#2ca787;color:#fff;font-weight:800;border-radius:10px;padding:10px;font-size:20px}.brand-copy{display:flex;flex-direction:column;font-size:12px;letter-spacing:2px}.brand-copy span{color:var(--muted)}.nav-head{font-size:10px;letter-spacing:2px;color:#7894a7;padding:17px 12px 8px}.nav-link,.nav-disabled{display:block;padding:12px;border-radius:8px;font-size:13px}.nav-link:hover{background:#243649;text-decoration:none}.nav-disabled{color:#597285}.sidebar-footer{margin-top:auto;color:#6d889e;font-size:11px;padding:12px}.main-content{margin-left:246px;min-height:100vh}.page-content{padding:44px clamp(24px,4.3vw,72px) 90px;max-width:1500px;margin:auto}.section-head{margin-bottom:26px;max-width:910px}.section-head .subtle{max-width:850px}.panel{background:var(--panel);border:1px solid var(--line);padding:25px;border-radius:14px;margin-bottom:20px;min-width:0}.two-cols{display:grid;grid-template-columns:1fr 1fr;gap:20px}.stacked-panels{display:grid;grid-template-columns:1fr 1.18fr;gap:20px;align-items:start}.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:23px}.metric{background:var(--panel);padding:23px;border:1px solid var(--line);border-radius:12px;display:flex;flex-direction:column;gap:10px}.metric strong{font-size:30px}.metric-label{color:var(--muted);font-size:12px}.pill-row{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 18px}.pill{padding:5px 9px;border-radius:999px;font-size:10px;text-transform:uppercase;letter-spacing:.5px;background:#2a3a49;color:#bbd0db;display:inline-flex;align-items:center}.pill.good{background:#153c34;color:#76e0ba}.pill.info{background:#243b58;color:#a9d4ff}.pill.warn{background:#4d3b2c;color:#ffd498}.cta,.ghost-btn{display:inline-block;padding:11px 15px;border-radius:8px;border:1px solid #38a989;background:#218b70;color:#fff;font-weight:600;font-size:13px;cursor:pointer;text-decoration:none}.cta:hover{background:#2aa886;text-decoration:none}.ghost-btn{border-color:#426078;background:transparent;color:#bfdef1}.ghost-btn:hover{background:#283a4a}.action-row{display:flex;gap:12px;flex-wrap:wrap;margin:18px 0}.filter{min-width:0}.filter label{display:block;color:#b5c8d5;font-weight:600;font-size:12px;margin-bottom:8px}.filter input{width:100%;padding:11px;background:#0e1923;border:1px solid var(--line);border-radius:6px;color:var(--text)}.filter .Select-control{background:#0e1923;border:1px solid var(--line)}.filter .Select-value-label,.filter .Select-placeholder{color:#d8e6ef!important}.filter .Select-menu-outer{background:#172a3a;color:#e7eef5}.filter .VirtualizedSelectOption{color:#d9e6ef}.filter .VirtualizedSelectFocusedOption{background:#31516a}.filter .Select-input input{color:#eee}.selection-summary{border-top:1px solid var(--line);padding:16px 0;margin-top:9px}.selection-summary strong{font-size:19px}.insight{position:relative}.insight p{font-size:13px}.insight .ghost-btn{margin-top:10px}.footnote{font-size:12px}.hint{font-size:12px}.drawer-shell{position:fixed;inset:0;z-index:20}.drawer-shell.hidden{display:none}.drawer-scrim{position:absolute;inset:0;background:#030b12bd}.drawer{position:absolute;right:0;top:0;bottom:0;width:min(980px,82vw);background:#11202d;border-left:1px solid #426076;overflow:auto;padding:27px 32px 55px;box-shadow:-20px 0 60px #0008}.drawer-top{display:flex;justify-content:space-between;align-items:start;gap:20px}.drawer-top h2{font-size:23px}.rule-line{display:flex;gap:9px;flex-wrap:wrap;padding:13px 0;border-bottom:1px solid var(--line);margin-bottom:22px}.rule-line p{width:100%;margin:6px 0 0}.evidence-list{margin-top:15px}.review-card{border:1px solid var(--line);border-radius:10px;background:#172a39;margin-bottom:12px;overflow:hidden}.review-summary{display:flex;align-items:center;flex-wrap:wrap;gap:15px;cursor:pointer;padding:16px}.review-summary:hover{background:#233749}.review-rating{font-size:11px;font-weight:700}.review-rating.up{color:#63d2ab}.review-rating.down{color:#ec9185}.review-detail{padding:18px;border-top:1px solid var(--line)}.meta-line{font-size:12px}.review-text{white-space:pre-wrap;overflow-wrap:anywhere;font-family:inherit;line-height:1.8;font-size:13px;padding:18px;background:#0f1b26;border-radius:8px;border:1px solid var(--line);max-height:330px;overflow:auto}.highlight{background:#4f5140;color:#fff3b7;padding:1px 1px;cursor:help;border-radius:2px}.highlight.coop{background:#146452;color:#d7ffed}.tags{display:flex;flex-wrap:wrap;gap:7px;margin:16px 0}.tag{display:inline-flex;font-size:10px;color:#d0deeb;background:#2b4053;border-radius:5px;padding:5px 8px;cursor:help}.tag.tag-coop{background:#195f50}.tag.unverified{border:1px dashed #e3ad74}.assignment{padding:9px 0;border-bottom:1px solid var(--line)}.assignment p{margin:5px 0}.pager{display:flex;align-items:center;gap:17px;justify-content:center;margin:20px 0}.code-panel{background:#0c1823;border:1px solid var(--line);padding:15px;border-radius:7px;white-space:pre-wrap;overflow:auto;color:#b6d7e9}
+@media(max-width:1150px){.stacked-panels{grid-template-columns:1fr}.sidebar{width:210px}.main-content{margin-left:210px}}@media(max-width:800px){.sidebar{position:relative;width:100%;height:auto}.main-content{margin-left:0}.two-cols,.metrics{grid-template-columns:1fr}.drawer{width:100vw}.page-content{padding:25px}}
+.source-link{display:inline-block;font-size:12px;margin-top:12px;color:#83c6ff}
+
+/* Force readable dropdown contrast across Dash / react-select versions. */
+.Select-control,.Select-menu-outer,.Select-menu,.Select-value,.Select--single,.Select-placeholder,
+.Select-value-label,.Select-input input,.VirtualizedSelectOption,.VirtualizedSelectFocusedOption,
+.dash-dropdown .Select-control,.dash-dropdown .Select-menu-outer {color:#f0f6fa!important}
+.Select-control,.Select-menu-outer,.Select-menu,.VirtualizedSelectOption {background-color:#182b3b!important}
+.Select-value-label,.Select-placeholder,.Select-option,.Select-input input {color:#f0f6fa!important;opacity:1!important}
+.VirtualizedSelectFocusedOption,.VirtualizedSelectSelectedOption {background-color:#33546a!important;color:#fff!important}
+.Select-arrow {border-top-color:#f0f6fa!important}
+.Select.is-open .Select-arrow {border-bottom-color:#f0f6fa!important}
+.Select-clear-zone {color:#d5e8f7!important}
+.three-cols {display:grid;grid-template-columns:2fr 1fr 1fr;gap:16px}
+button:disabled{opacity:.4;cursor:not-allowed}
+@media(max-width:1050px){.three-cols{grid-template-columns:1fr 1fr}}
+
+/* V3: High-contrast Dash/React-Select menus. Avoid pale text on a white input. */
+.dash-dropdown .Select-control,
+.dash-dropdown .Select-menu-outer,
+.dash-dropdown .Select-menu,
+.dash-dropdown .Select-option,
+.dash-dropdown .VirtualizedSelectOption,
+.dash-dropdown .Select-value,
+.dash-dropdown .Select--single > .Select-control,
+.dash-dropdown .Select.is-focused > .Select-control,
+.dash-dropdown .Select.is-open > .Select-control,
+.dash-dropdown .Select.has-value > .Select-control,
+.filter .Select-control,
+.filter .Select-menu-outer,
+.filter .Select-menu,
+.filter .VirtualizedSelectOption {background:#f4f8fc !important;color:#182c3e !important;opacity:1 !important;}
+.dash-dropdown .Select-value-label,
+.dash-dropdown .Select-placeholder,
+.dash-dropdown .Select-input > input,
+.dash-dropdown .Select-option,
+.dash-dropdown .VirtualizedSelectOption,
+.dash-dropdown .Select-value,
+.filter .Select-value-label,
+.filter .Select-placeholder,
+.filter .Select-input > input,
+.filter .VirtualizedSelectOption {color:#182c3e !important;-webkit-text-fill-color:#182c3e !important;opacity:1 !important;}
+.dash-dropdown .VirtualizedSelectFocusedOption,
+.dash-dropdown .VirtualizedSelectSelectedOption,
+.filter .VirtualizedSelectFocusedOption,
+.filter .VirtualizedSelectSelectedOption {background:#c9e2ec !important;color:#10293b !important;}
+.dash-dropdown .Select-arrow, .filter .Select-arrow {border-top-color:#294459!important;}
+.dash-dropdown .Select.is-open .Select-arrow,.filter .Select.is-open .Select-arrow {border-bottom-color:#294459!important;}
+.dash-dropdown .Select-clear-zone,.filter .Select-clear-zone {color:#294459!important;}
+/* A fullscreen loading spinner from dcc.Loading remains above chart panels but below modals. */
+._dash-loading-callback {cursor:progress;}
+
+/* V4: loading overlay, sentiment parity, and clickable evidence passages. */
+.case-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+@media(max-width:1050px){.case-grid{grid-template-columns:1fr}}
+.tag{border:1px solid transparent;font:inherit;font-size:11px;cursor:pointer;text-align:left;transition:filter .15s,box-shadow .15s}
+.tag:hover:not(:disabled){filter:brightness(1.25);box-shadow:0 0 0 1px #fff4}
+.tag:disabled{opacity:.65;cursor:not-allowed}
+.tag.sentiment-positive,.highlight.sentiment-positive{background:#135943;color:#aef5d6;border-color:#248867}
+.tag.sentiment-negative,.highlight.sentiment-negative{background:#6b2931;color:#ffd1d2;border-color:#a84d56}
+.tag.sentiment-mixed,.highlight.sentiment-mixed{background:#665322;color:#ffe5a0;border-color:#ad8933}
+.tag.sentiment-neutral,.highlight.sentiment-neutral{background:#334859;color:#d0e2ed;border-color:#597589}
+.highlight{padding:1px 2px;border-radius:3px;cursor:help}
+.evidence-anchor{display:inline;scroll-margin-top:110px}
+.evidence-flash{animation:evidence-pulse 1.75s ease-out}
+@keyframes evidence-pulse{0%,30%{outline:3px solid #ffffff;box-shadow:0 0 0 7px #fff5}100%{outline:3px solid transparent;box-shadow:none}}
+/* Fullscreen Dash loading mask must not be opaque, including when a nested graph updates. */
+.dash-loading-overlay{background:rgba(0,0,0,.30)!important}
+
+/* V5: reliable fullscreen, translucent loading overlay and white spinner. */
+.loader-screen{position:fixed!important;inset:0!important;z-index:10000!important;
+  display:flex;align-items:center;justify-content:center;flex-direction:column;gap:18px;
+  background:rgba(0,0,0,.30)!important;pointer-events:all}
+.loader-ring{width:48px;height:48px;border-radius:50%;border:5px solid rgba(255,255,255,.25);
+  border-top-color:#fff;border-right-color:#fff;animation:ri-spin .8s linear infinite}
+.loader-label{font-size:13px;font-weight:700;color:#fff;text-shadow:0 2px 8px #000}
+@keyframes ri-spin{to{transform:rotate(360deg)}}
+/* The Dash Loading wrapper must not introduce an opaque mask. */
+.dash-loading-overlay{background:transparent!important}
+.overview-chapter{margin:24px 0 32px;border-top:1px solid var(--line);padding-top:26px}
+.chapter-heading{margin-bottom:20px}.chapter-heading h2{font-size:26px;margin:4px 0 7px}
+.chapter-cases{display:flex;flex-direction:column;gap:12px}
+.overview-case{margin:0;max-width:920px}.overview-case h3{margin-top:0}
+
+/* V7: direct date comparison inside second-stage narrative. */
+.compare-table{width:100%;border-collapse:collapse;margin:16px 0;font-size:13px}
+.compare-table th,.compare-table td{padding:10px;border-bottom:1px solid var(--line);text-align:left}
+.compare-table th{color:#c9dce9}
+/* V9 shared two-family sentiment palette in first-stage charts. */
+.playground-controls{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
+.playground-sentiments{display:flex;flex-wrap:wrap;gap:12px;margin:10px 0 18px}
+.playground-sentiments label{display:flex;align-items:center;gap:5px;color:#d2e2ec;font-size:13px}
+.playground-results{margin-top:22px}
+.playground-list .review-card{margin-bottom:12px}
+.pg-count{font-weight:700;font-size:22px;color:#c8f0e8}
+.translation-actions{margin:12px 0}
+.translated-review{white-space:pre-wrap;line-height:1.7;background:#172c3a;border-left:3px solid #60c7aa;border-radius:5px;padding:14px;margin-top:8px;font-size:13px}
+@media(max-width:1000px){.playground-controls{grid-template-columns:1fr}}
+
+/* V11: no empty right-hand column when an interpretive second-step was removed. */
+.stacked-panels.single-stage{grid-template-columns:minmax(0,1fr)}

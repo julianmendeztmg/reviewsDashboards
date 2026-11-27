@@ -1,0 +1,53 @@
+/* V10: Match the white input backgrounds in Dash's old and new React Select
+   implementations. Dropdown text is dark, and selected entries use purple. */
+:root { --ri-dropdown-ink:#14162b; --ri-purple:#7038ba; }
+.filter .Select-control,
+.filter .Select-menu-outer,
+.filter .Select-menu,
+.filter .Select-input,
+.filter .Select--single > .Select-control,
+.filter .Select--multi > .Select-control,
+.dash-dropdown .Select-control,
+.dash-dropdown .Select-menu-outer,
+.dash-dropdown .Select-menu { background-color:#fff !important; color:var(--ri-dropdown-ink) !important; }
+.filter .Select-control .Select-value-label,
+.filter .Select-control .Select-placeholder,
+.filter .Select-control .Select-value,
+.filter .Select-input input,
+.filter .Select-menu-outer .VirtualizedSelectOption,
+.filter .Select-menu-outer .Select-option,
+.dash-dropdown .Select-control .Select-value-label,
+.dash-dropdown .Select-control .Select-placeholder,
+.dash-dropdown .Select-input input,
+.dash-dropdown .Select-menu-outer .VirtualizedSelectOption,
+.dash-dropdown .Select-menu-outer .Select-option {
+  color:var(--ri-dropdown-ink)!important;
+  -webkit-text-fill-color:var(--ri-dropdown-ink)!important;
+  opacity:1!important;
+}
+.filter .Select-menu-outer .VirtualizedSelectSelectedOption,
+.filter .Select-menu-outer .Select-option.is-selected,
+.dash-dropdown .Select-menu-outer .VirtualizedSelectSelectedOption {
+  background-color:#eee2ff!important;color:var(--ri-purple)!important;
+  -webkit-text-fill-color:var(--ri-purple)!important;
+}
+.filter .Select-menu-outer .VirtualizedSelectFocusedOption,
+.filter .Select-menu-outer .Select-option.is-focused,
+.dash-dropdown .Select-menu-outer .VirtualizedSelectFocusedOption {
+  background-color:#e9dafa!important;color:#44216e!important;
+  -webkit-text-fill-color:#44216e!important;
+}
+.filter .Select-arrow {border-top-color:#253146!important}
+.filter .Select-clear-zone {color:#253146!important}
+/* Modern react-select class names used by newer Dash dropdown versions. */
+.filter [class*='-control'],.dash-dropdown [class*='-control'] {background:#fff!important;color:var(--ri-dropdown-ink)!important}
+.filter [class*='-singleValue'],.filter [class*='-placeholder'],
+.filter [class*='-input-container'],.filter [class*='-option'],
+.dash-dropdown [class*='-singleValue'],.dash-dropdown [class*='-placeholder'] {
+  color:var(--ri-dropdown-ink)!important;-webkit-text-fill-color:var(--ri-dropdown-ink)!important;opacity:1!important
+}
+.filter [class*='-option'][aria-selected='true'] {color:var(--ri-purple)!important;background:#eee2ff!important}
+.filter [class*='-option'][aria-selected='false']:hover {background:#e9dafa!important}
+/* Native selection indication, when applicable. */
+.filter select, .filter select option {color:var(--ri-dropdown-ink);background:#fff}
+.review-export {margin-bottom:8px}

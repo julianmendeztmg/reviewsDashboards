@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0",
+  "insight_id": "puzzle-clarity-v1",
+  "source_dataset_sha256": "761fb2023d18c64353fac62548c34528fb964c0066bd5076474039eba97077d4",
+  "version": 1,
+  "interpretations": [
+    {
+      "id": "puzzle-clarity-overlap",
+      "title": "Puzzle frustration often comes with unclear guidance",
+      "claim": "Among non-recommending players, negative puzzle-design and guidance mentions frequently occur in the same reviews. The pattern suggests that some frustration may concern understanding objectives or rules\u2014not simply difficulty.",
+      "basis": "Count unique non-recommended reviews with negative puzzle-design, guidance and difficulty tag sentiments; inspect their overlap and named-puzzle co-mentions.",
+      "limitations": "A co-mention does not establish which specific puzzle caused a complaint, nor does it prove a causal relationship."
+    }
+  ]
+}

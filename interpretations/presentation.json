@@ -1,0 +1,7 @@
+{
+  "schema_version": "1.0",
+  "source_dataset_sha256": "761fb2023d18c64353fac62548c34528fb964c0066bd5076474039eba97077d4",
+  "title": "Players praise the visual style while criticizing story and atmosphere",
+  "claim": "Positive graphics/art mentions are more common than negative graphics mentions, whereas negative story/atmosphere sentiment dominates that tag. The combination suggests visual appreciation can coexist with disappointment in the surrounding experience.",
+  "basis": "Compare sentiment-specific counts for Graphics & art direction and Story & atmosphere, in both recommendation groups."
+}

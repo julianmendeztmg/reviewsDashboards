@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0",
+  "insight_id": "playtime-review-differences-v1",
+  "source_dataset_sha256": "761fb2023d18c64353fac62548c34528fb964c0066bd5076474039eba97077d4",
+  "version": 1,
+  "interpretations": [
+    {
+      "id": "playtime-association",
+      "title": "Players reviewing after 6–12 hours are less likely to recommend than those reviewing after 3–6 hours",
+      "claim": "Recommendation rates differ substantially between the 3–6h and 6–12h review groups. This may reflect the experiences encountered, reviewer composition, or both. Explore which positive and negative tags are concentrated within each playtime and recommendation group.",
+      "basis": "The dashboard calculates the exact recommendation counts and rates for each exclusive playtime interval from the current SQLite database. Comparisons are observational.",
+      "limitations": "Different playtime groups contain different reviewers. These are not before-and-after measurements of the same player and cannot establish that longer playtime causes dissatisfaction."
+    }
+  ]
+}

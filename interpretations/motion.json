@@ -1,0 +1,7 @@
+{
+  "schema_version": "1.0",
+  "source_dataset_sha256": "761fb2023d18c64353fac62548c34528fb964c0066bd5076474039eba97077d4",
+  "title": "Physical discomfort is reported even by reviewers who recommend the game",
+  "claim": "Negative motion-sickness mentions occur in both recommendation groups. This suggests that discomfort can coexist with overall enjoyment. Related complaints about navigation, abilities or action elements may offer avenues to explore, but simple co-mentions cannot identify the cause of discomfort.",
+  "basis": "Compare negative Motion sickness mentions in recommended and non-recommended reviews, then inspect related tag sentiments and the full original passages in each selected cohort."
+}
